@@ -5,7 +5,6 @@
 </head>
 <body>
 	<h1>Register</h1>
-
 	<form>
 		<div>
 			<label for="firstName">First Name:</label>
@@ -31,28 +30,34 @@
 			<input type="email" id="email" name="email" required placeholder="your email">
 
 			<label for="password">Password:</label>
-			<input type="password" id="password" name="password" required minlength="5" maxlength="10">
+			<input type="password" id="password" name="password" required pattern=".{5,10}" required title="5 to 10 characters">
 		</div>
 
 		<div>
-			Birthday:
-			<select name="month">
-				<option value="january">January</option>
-				<option value="february">February</option>
-				<option value="march">March</option>
-			</select>
-			<select name="day">
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-				<option value="4">4</option>
-				<option value="5">5</option>
-			</select>
-			<select name="year">
-				<option value="2000">2000</option>
-				<option value="2001">2001</option>
-				<option value="2002">2002</option>
-			</select>
+			<label>
+				Birthday:
+				<select name="month">
+					<option value="month">Month</option>
+					<option value="january">January</option>
+					<option value="february">February</option>
+					<option value="march">March</option>
+				</select>
+				<select name="day">
+					<option value="day">Day</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+				<select name="year">
+					<option value="year">Year</option>
+					<option value="2000">2000</option>
+					<option value="2001">2001</option>
+					<option value="2002">2002</option>
+				</select>
+			</label>
+			
 		</div>
 
 		<div>
