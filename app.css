@@ -1,0 +1,27 @@
+h1 {
+	color: rgba(240, 0, 100, 1);
+	/*border-color: purple;
+	border-width: 5px;
+	border-style: solid;*/
+
+	border: 2px dashed rgb(255, 100, 80);
+}
+
+h2 {
+	color: rgba(240, 0, 100, .6);
+}
+
+h3 {
+	color: rgba(240, 0, 100, .2);
+}
+
+h4 {
+	background: rgb(255, 100, 80);
+}
+
+body {
+	background: pink;
+	/*background: url(http://dendro.cnre.vt.edu/dendrology/images/Carya%20ovata/wood.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;*/
+}
