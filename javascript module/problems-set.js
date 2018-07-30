@@ -14,7 +14,7 @@ console.log("print all even numbers between 10 and 40");
 var num2 = 10;
 while(num2 <= 40) {
 	console.log(num2);
-	num2 = num2 + 2;
+	num2 +=2;
 }
 
 //third problem
