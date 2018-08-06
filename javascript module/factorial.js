@@ -10,4 +10,5 @@ funcion factorial (number) {
     for(; number <1; number --){
       sum = sum * (number - 1);
     }
+   return sum;
 }
