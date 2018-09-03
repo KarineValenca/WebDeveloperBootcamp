@@ -1,14 +1,9 @@
-funcion factorial (number) {
-  sum = number;
-  if(number == 0){
-    return 1;
+funcion factorial(num){
+  var result = 1;
+  
+  for(var i = 2; i <= num; i++){
+    result *= i;
   }
-  else if (number == 1){
-    return 1;
-  }
-  else {
-    for(; number <1; number --){
-      sum = sum * (number - 1);
-    }
-   return sum;
+  
+  return result;
 }
