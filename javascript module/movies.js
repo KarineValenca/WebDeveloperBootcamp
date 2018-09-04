@@ -18,7 +18,7 @@ var myMovies = [
 
 myMovies.forEach(function(movie){
 	var result = "You have "
-	if(movie.hasWatched == true){
+	if(movie.hasWatched){
 		result += "watched ";
 	} else {
 		result += "not seen ";
