@@ -3,14 +3,69 @@
 <head>
 	<title>Circles</title>
 	<script type="text/javascript" src="paper-full.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.2/howler.js"></script>
 	<link rel="stylesheet" type="text/css" href="circles.css">
 	<script type="text/paperscript" canvas="myCanvas">
+
+		var keyData = {
+			a: {
+				color: "purple",
+				sound: new Howl({
+  				src: ['./sounds/bubbles.mp3']
+				})
+			},
+			s: {
+				color: "green",
+				sound: new Howl({
+  				src: ['./sounds/clay.mp3']
+				})
+			},
+			d: {
+				color: "yellow",
+				sound: new Howl({
+  				src: ['./sounds/confetti.mp3']
+				})
+			},
+			f: {
+				color: "red",
+				sound: new Howl({
+  				src: ['./sounds/corona.mp3']
+				})
+			},
+			g: {
+				color: "blue",
+				sound: new Howl({
+  				src: ['./sounds/dotted-spiral.mp3']
+				})
+			}
+		}
+
+		var circles = [];	
+		
 		function onKeyDown(event) {
-		var maxPoint = new Point(view.size.width, view.size.height);
-		var randomPoint = Point.random();
-		var point = maxPoint * randomPoint;
-				var myCircle = new Path.Circle(point, 10);
-				myCircle.fillColor = 'blue';
+
+			if (keyData[event.key]){
+				var maxPoint = new Point(view.size.width, view.size.height);
+				var randomPoint = Point.random();
+				var point = maxPoint * randomPoint;
+				var newCircle = new Path.Circle(point, 500);
+				newCircle.fillColor = keyData[event.key].color
+				circles.push(newCircle);
+				keyData[event.key].sound.play();
+			}else{
+
+			}
+		}
+
+		function onFrame(event){
+			for(var i = 0; i < circles.length; i++){
+				circles[i].fillColor.hue +=1;
+				circles[i].scale(.9);
+				if(circles[i].area < 1){
+      		circles[i].remove(); // remove the circle from the canvas
+      		circles.splice(i, 1); // remove the circle from the array
+    		}	
+			}
 		}
 	</script>
 </head>
