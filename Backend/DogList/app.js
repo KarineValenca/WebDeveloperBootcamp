@@ -17,6 +17,20 @@ app.get("/dog", function(req, res){
 	res.send("MEOW!");
 })
 
+app.get("/r/:subredditName", function(req, res){
+	var subreddit = req.params.subredditName;
+	res.send("WELCOME TO A THE " + subreddit.toUpperCase() + " SUBREDDIT!")
+});
+
+app.get("/r/:subredditName/comments/:id/:title", function(req, res){
+	res.send("WELCOME TO THE COMMENTS PAGE!")
+});
+
+app.get("*", function(req, res){
+	console.log("SOMEONE MADE A REQUEST TO /*");
+	res.send("YOU ARE A START!");
+})
+
 // Tell Express to listen for requests (start server)
 app.listen(3000, function() { 
   console.log('Server listening on port 3000'); 
