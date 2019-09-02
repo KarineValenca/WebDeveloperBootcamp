@@ -23,7 +23,7 @@ var Blog = mongoose.model("Blog", blogSchema);
 
 // RESTFUL ROUTES
 app.get("/", function(req, res){
-	res.render("index");
+	res.redirect("/blogs");
 })
 
 app.get("/blogs", function(req, res){
@@ -36,6 +36,33 @@ app.get("/blogs", function(req, res){
 		}
 	})
 });
+
+// NEW ROUTE
+app.get("/blogs/new", function(req, res){
+	res.render("new");
+})
+
+// CREATE ROUTE
+app.post("/blogs", function(req, res){
+	Blog.create(req.body.blog, function(err, blog){
+		if(!err) {
+			res.redirect("/blogs")
+		}else{
+			res.render("new")
+		}
+	})
+})
+
+// SHOW ROUTE
+app.get("/blogs/:id", function(req, res){
+	Blog.findById(req.params.id, function(err, blog){
+		if(!err) {
+			res.render("show", {blog: blog})
+		}else {
+			res.redirect("blogs");
+		}
+	})
+})
 
 // Tell Express to listen for requests (start server)
 app.listen(3000, function() { 
