@@ -21,7 +21,7 @@ app.get("/campgrounds", function(req, res){
 		if(err) {
 			console.log(err);
 		}else{
-			res.render("index", {campgrounds: campgrounds});
+			res.render("campgrounds/index", {campgrounds: campgrounds});
 		}
 	})
 })
@@ -45,7 +45,7 @@ app.post("/campgrounds", function(req, res){
 
 // NEW
 app.get("/campgrounds/new", function(req, res){
-	res.render("new")
+	res.render("campgrounds/new")
 })
 
 // SHOW
@@ -55,13 +55,28 @@ app.get("/campgrounds/:id", function(req, res){
 		if(err) {
 			console.log(err);
 		}else {
-			console.log(campground);
 			//render show page
-			res.render("show", {campground: campground});
+			res.render("campgrounds/show", {campground: campground});
 		}
 	});
 
 })
+
+//==============================
+
+// Comment new
+
+app.get("/campgrounds/:id/comments/new",function(req, res){
+	Campground.findById(req.params.id, function(err, campground){
+		if(!err){
+			res.render("comments/new", {campground: campground});
+		}else {
+			console.log(err);
+		}
+	})
+	
+})
+
 
 // Tell Express to listen for requests (start server)
 app.listen(3000, function() { 
