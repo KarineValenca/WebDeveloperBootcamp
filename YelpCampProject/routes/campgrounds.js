@@ -54,6 +54,7 @@ router.get("/:id", function(req, res){
 // EDIT
 router.get("/:id/edit", middleware.checkCampgroundOwnership, function(req, res){
 		Campground.findById(req.params.id, function(err, campground){
+			req.flash("error", "Campground not found")
 			res.render("campgrounds/edit", {campground: campground})
 		})
 })
@@ -62,6 +63,7 @@ router.get("/:id/edit", middleware.checkCampgroundOwnership, function(req, res){
 router.put("/:id", middleware.checkCampgroundOwnership, function(req, res){
 	Campground.findByIdAndUpdate(req.params.id, req.body.campground, function(err, campground){
 		if(err){
+			req.flash("error", "Campground not found")
 			res.redirect("/campgrounds")
 		}else {
 			res.redirect("/campgrounds/" + req.params.id)
@@ -73,6 +75,7 @@ router.put("/:id", middleware.checkCampgroundOwnership, function(req, res){
 router.delete("/:id", middleware.checkCampgroundOwnership, function(req, res){
 	Campground.findByIdAndRemove(req.params.id, function(err){
 		if(err){
+			req.flash("error", "Campground not found")
 			res.redirect("/campgrounds")
 		} else {
 			res.redirect("/campgrounds")
